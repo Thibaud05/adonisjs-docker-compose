@@ -12,3 +12,8 @@ HOST=0.0.0.0
 ```
 docker-compose up
 ```
+
+## Enter in the nodejs container :
+```
+docker exec -it appname-nodejs /bin/bash
+```
