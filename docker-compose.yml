@@ -17,7 +17,21 @@ services:
       - default
     depends_on:
       - mysql
-
+  api-migration:
+    container_name:  "${APP_NAME}-migration"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: adonis migration:run --force
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules
+    networks:
+      - default
+    depends_on:
+      - mysql
   mysql:
     container_name: "${APP_NAME}-mysql"
     image: mysql:5.7
