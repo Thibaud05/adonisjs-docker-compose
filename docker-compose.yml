@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: adonis serve --dev --polling
+    command: bash -c "adonis migration:run --force && adonis serve --dev --polling"
     environment:
       - NODE_ENV=dev
     volumes:
